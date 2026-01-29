@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HTML Summary (Extended) - Website Development</title>
+
+  <style>
+    :root{
+      --bg:#ffffff;
+      --text:#1f2937;
+      --muted:#6b7280;
+      --line:#e5e7eb;
+      --soft:#f8fafc;
+      --soft2:#f1f5f9;
+      --blue:#2563eb;
+      --green:#16a34a;
+      --red:#dc2626;
+      --codebg:#0b1220;
+      --code:#e5e7eb;
+      --shadow:0 10px 30px rgba(0,0,0,.06);
+      --radius:14px;
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: Arial, Helvetica, sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.75;
+    }
+    .wrap{
+      max-width:1100px;
+      margin:0 auto;
+      padding:32px 18px 80px;
+    }
+    header{
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:22px 22px;
+      background:linear-gradient(180deg, #ffffff, #fbfdff);
+      box-shadow:var(--shadow);
+    }
+    header h1{
+      margin:0 0 6px;
+      font-size:34px;
+      letter-spacing:-0.5px;
+    }
+    header p{
+      margin:0;
+      color:var(--muted);
+      max-width:80ch;
+    }
+
+    .toc{
+      margin-top:18px;
+      display:grid;
+      gap:10px;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    }
+    .toc a{
+      display:block;
+      text-decoration:none;
+      border:1px solid var(--line);
+      padding:10px 12px;
+      border-radius:12px;
+      background:var(--soft);
+      color:var(--text);
+    }
+    .toc a:hover{
+      border-color:#cbd5e1;
+      background:#ffffff;
+    }
+    .toc span{
+      color:var(--muted);
+      font-size:13px;
+      display:block;
+      margin-top:4px;
+    }
+
+    section{
+      margin-top:26px;
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:22px;
+      background:#fff;
+      box-shadow:var(--shadow);
+    }
+
+    h2{
+      margin:0 0 10px;
+      font-size:24px;
+      border-bottom:2px solid var(--line);
+      padding-bottom:8px;
+    }
+    h3{
+      margin:22px 0 10px;
+      font-size:18px;
+    }
+    p{margin:10px 0}
+    ul{margin:10px 0 10px 22px}
+    li{margin:7px 0}
+
+    .tag{
+      display:inline-block;
+      font-size:12px;
+      padding:4px 10px;
+      border-radius:999px;
+      background:var(--soft2);
+      border:1px solid var(--line);
+      color:var(--muted);
+      margin-right:8px;
+      vertical-align:middle;
+    }
+    .tip{
+      background:#eff6ff;
+      border-left:6px solid var(--blue);
+      padding:12px 14px;
+      border-radius:12px;
+      margin:14px 0;
+      font-weight:700;
+    }
+    .warn{
+      background:#fff7ed;
+      border-left:6px solid #f97316;
+      padding:12px 14px;
+      border-radius:12px;
+      margin:14px 0;
+      font-weight:700;
+    }
+    .ok{
+      background:#ecfdf5;
+      border-left:6px solid var(--green);
+      padding:12px 14px;
+      border-radius:12px;
+      margin:14px 0;
+      font-weight:700;
+    }
+
+    code{
+      font-family: Consolas, "Courier New", monospace;
+      background:#f1f5f9;
+      padding:2px 6px;
+      border-radius:6px;
+      border:1px solid #e2e8f0;
+      font-size: 0.95em;
+    }
+    pre{
+      background:var(--codebg);
+      color:var(--code);
+      border-radius:14px;
+      padding:16px;
+      overflow:auto;
+      border:1px solid rgba(255,255,255,.08);
+      box-shadow:inset 0 0 0 1px rgba(255,255,255,.03);
+      margin:12px 0;
+    }
+    pre code{
+      background:transparent;
+      border:none;
+      padding:0;
+      border-radius:0;
+      color:inherit;
+      font-size:13.5px;
+      display:block;
+      white-space:pre;
+    }
+
+    .grid2{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:14px;
+    }
+    @media (max-width:900px){
+      .grid2{grid-template-columns:1fr}
+    }
+    .card{
+      border:1px solid var(--line);
+      background:var(--soft);
+      border-radius:14px;
+      padding:14px;
+    }
+    .card h4{
+      margin:0 0 6px;
+      font-size:15px;
+    }
+    .muted{color:var(--muted)}
+    .mini{
+      font-size:13px;
+      color:var(--muted);
+    }
+    .hr{
+      height:1px;
+      background:var(--line);
+      margin:20px 0;
+    }
+    footer{
+      margin-top:22px;
+      text-align:center;
+      color:var(--muted);
+      font-size:13px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <header>
+      <h1>HTML & Website Development Summary (Extended)</h1>
+      <p>
+        This file is an extended handout based on your syllabus: keyboard basics, web terms, HTML tags,
+        page layout, hyperlinks, graphics, optimization (SEO), and accessibility. It includes many examples
+        and code you can use for teaching and exams.
+      </p>
+
+      <div class="toc">
+        <a href="#keyboard">1) Keyboard Characters <span>definition, types, parts, combo keys, typing tips</span></a>
+        <a href="#terms">2) General Web Terms <span>webpage, website, browser, editor, URL, hyperlink</span></a>
+        <a href="#setup">3) Setup <span>install editors/browsers, create folders, first file</span></a>
+        <a href="#htmlintro">4) HTML Basics <span>structure, tags, attributes, comments</span></a>
+        <a href="#tagcats">5) Tag Categories <span>headings, formatting, lists, tables, forms, media</span></a>
+        <a href="#links">6) Hyperlinks <span>syntax, default style, types, best practice</span></a>
+        <a href="#graphics">7) Graphics <span>img, canvas, svg</span></a>
+        <a href="#layout">8) Page Layout <span>parts of webpage, semantic tags, layout examples</span></a>
+        <a href="#seo">9) Optimization / SEO <span>meta, title, headings, alt, semantics</span></a>
+        <a href="#a11y">10) Accessibility <span>roles, labels, keyboard, validation</span></a>
+      </div>
+    </header>
+
+    <!-- ===================================================== -->
+    <section id="keyboard">
+      <h2>1) Use of Keyboard Characters</h2>
+
+      <p><span class="tag">Definition</span>
+        A keyboard is an input device used to type letters, numbers, and symbols. “Keyboard characters”
+        include letters (A–Z), numbers (0–9), punctuation (.,!?), and special symbols (@, #, $, %, &).
+      </p>
+
+      <div class="grid2">
+        <div class="card">
+          <h4>Types of Keys</h4>
+          <ul>
+            <li><strong>Alphabet keys</strong>: A–Z (used to type words)</li>
+            <li><strong>Number keys</strong>: 0–9 (used for numbers and symbols)</li>
+            <li><strong>Function keys</strong>: F1–F12 (special functions, depends on OS/app)</li>
+            <li><strong>Modifier keys</strong>: Shift, Ctrl, Alt (modify another key action)</li>
+            <li><strong>Navigation keys</strong>: Arrow keys, Home, End, PageUp, PageDown</li>
+            <li><strong>Editing keys</strong>: Backspace, Delete, Insert</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h4>Keyboard Parts</h4>
+          <ul>
+            <li><strong>Typing area</strong>: letters, numbers, punctuation</li>
+            <li><strong>Function row</strong>: F1–F12</li>
+            <li><strong>Navigation cluster</strong>: arrows + Home/End/Page keys</li>
+            <li><strong>Numeric keypad</strong>: fast numeric input (on full keyboard)</li>
+          </ul>
+          <p class="mini">
+            Laptop keyboards may not have a separate numeric keypad.
+          </p>
+        </div>
+      </div>
+
+      <h3>Combination Keys and Their Use</h3>
+      <p>
+        Combination keys improve speed when editing text or coding.
+      </p>
+      <ul>
+        <li><code>Ctrl + C</code> = Copy</li>
+        <li><code>Ctrl + V</code> = Paste</li>
+        <li><code>Ctrl + X</code> = Cut</li>
+        <li><code>Ctrl + Z</code> = Undo</li>
+        <li><code>Ctrl + S</code> = Save</li>
+        <li><code>Ctrl + F</code> = Find text</li>
+        <li><code>Ctrl + A</code> = Select all</li>
+        <li><code>Alt + Tab</code> = Switch applications</li>
+      </ul>
+
+      <div class="tip">
+        For coding: <code>Ctrl + /</code> often toggles comments in many editors (like VS Code).
+      </div>
+
+      <h3>Typing Tips (Technique)</h3>
+      <ul>
+        <li><strong>Hand positioning:</strong> place fingers on home row keys (A S D F / J K L ;)</li>
+        <li><strong>Body posture:</strong> sit straight, shoulders relaxed, elbows ~90°</li>
+        <li><strong>Ergonomics:</strong> screen at eye level, wrists not bent too much</li>
+        <li><strong>Typing speed:</strong> measured in WPM (Words Per Minute)</li>
+      </ul>
+
+      <h3>Using Typing Master (or similar apps)</h3>
+      <ul>
+        <li>Check total number of words typed per minute (WPM)</li>
+        <li>Check number of errors and accuracy percentage</li>
+        <li>Use games to increase speed while keeping accuracy</li>
+      </ul>
+
+      <div class="ok">
+        Goal example: Improve from 15 WPM → 25 WPM while keeping accuracy above 90%.
+      </div>
+    </section>
+
+    <!-- ===================================================== -->
+    <section id="terms">
+      <h2>2) Definition of General Web Terms</h2>
+
+      <p><span class="tag">Key Terms</span>
+        These terms are required before starting website development.
+      </p>
+
+      <div class="grid2">
+        <div class="card">
+          <h4>Definitions</h4>
+          <ul>
+            <li><strong>Webpage:</strong> One page (example: Home page)</li>
+            <li><strong>Website:</strong> A collection of webpages (example: school website)</li>
+            <li><strong>Web browser:</strong> App to view webpages (Chrome, Edge, Firefox)</li>
+            <li><strong>Text editor:</strong> App to write code (VS Code, Sublime, Notepad)</li>
+            <li><strong>URL:</strong> Address of a webpage (example: <code>https://example.com</code>)</li>
+            <li><strong>Hyperlink:</strong> Clickable link to go to another page</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h4>Small Examples</h4>
+          <p><strong>Example URL parts</strong>:</p>
+          <pre><code>https://www.school.edu/news/index.html
+|----protocol----| |domain-----| |path--------|</code></pre>
+
+          <p><strong>Hyperlink example</strong>:</p>
+          <pre><code>&lt;a href="https://www.google.com"&gt;Open Google&lt;/a&gt;</code></pre>
+          <p class="mini">In browsers, a link is usually blue + underlined by default.</p>
+        </div>
+      </div>
+
+      <div class="warn">
+        Students often confuse “webpage” and “website”. Remember:
+        <strong>website = many webpages</strong>.
+      </div>
+    </section>
+
+    <!-- ===================================================== -->
+    <section id="setup">
+      <h2>3) Setting up Text Editor and Web Browser</h2>
+
+      <h3>Examples of Text Editors</h3>
+      <ul>
+        <li><strong>VS Code</strong> (recommended for web dev)</li>
+        <li>Notepad / Notepad++</li>
+        <li>Sublime Text</li>
+      </ul>
+
+      <h3>Types and Function of Web Browsers</h3>
+      <ul>
+        <li><strong>Chrome</strong>: very popular, strong dev tools</li>
+        <li><strong>Firefox</strong>: good developer tools, open-source</li>
+        <li><strong>Edge</strong>: Windows default, also good dev tools</li>
+      </ul>
+
+      <h3>Installing from Storage Drive vs Internet</h3>
+      <div class="grid2">
+        <div class="card">
+          <h4>From Storage Drive (Offline)</h4>
+          <ul>
+            <li>Copy installer from USB drive</li>
+            <li>Run the installer</li>
+            <li>Finish installation (Next → Next → Install)</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h4>From Internet (Online)</h4>
+          <ul>
+            <li>Search official website</li>
+            <li>Download installer</li>
+            <li>Install and open the application</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3>Folder Setup for a Web Project</h3>
+      <p>Create a folder like:</p>
+      <pre><code>my-website/
+  index.html
+  about.html
+  css/
+    style.css
+  images/
+    logo.png</code></pre>
+
+      <div class="tip">
+        Good naming rule: use lowercase and hyphen, example: <code>student-list.html</code>, not <code>Student List.html</code>.
+      </div>
+    </section>
+
+    <!-- ===================================================== -->
+    <section id="htmlintro">
+      <h2>4) Creating a Web Page in HTML (Introduction)</h2>
+
+      <h3>What is a Website? (Description, Types, Function)</h3>
+      <ul>
+        <li><strong>Description:</strong> A website is content published on the internet.</li>
+        <li><strong>Types:</strong> personal blog, school site, business site, ecommerce, portfolio, news</li>
+        <li><strong>Functions:</strong> information sharing, communication, selling, learning, marketing</li>
+      </ul>
+
+      <h3>Introduction to HTML</h3>
+      <p>
+        HTML is a markup language used to build the structure of a webpage.
+        HTML does not add advanced design (that is CSS), and it does not add behavior (that is JavaScript).
+      </p>
+
+      <div class="grid2">
+        <div class="card">
+          <h4>HTML = Structure</h4>
+          <p class="muted">Example: headings, paragraphs, lists, forms, tables</p>
+        </div>
+        <div class="card">
+          <h4>CSS = Design</h4>
+          <p class="muted">Example: colors, layout, spacing, fonts</p>
+        </div>
+      </div>
+
+      <h3>HTML Tag Definition, Types, and Examples</h3>
+      <ul>
+        <li><strong>Tag:</strong> text inside <code>&lt; &gt;</code>, example: <code>&lt;p&gt;</code></li>
+        <li><strong>Paired tags:</strong> have opening and closing tags: <code>&lt;p&gt;...&lt;/p&gt;</code></li>
+        <li><strong>Void tags:</strong> no closing tag: <code>&lt;img&gt;</code>, <code>&lt;br&gt;</code>, <code>&lt;input&gt;</code></li>
+      </ul>
+
+      <h3>Tag Attributes</h3>
+      <p>
+        Attributes give extra information to tags (like link address, image source, etc).
+      </p>
+      <pre><code>&lt;a href="about.html" target="_blank"&gt;Open About Page&lt;/a&gt;
+
+&lt;img src="images/logo.png" alt="School Logo" width="120"&gt;</code></pre>
+
+      <div class="ok">
+        Always include <code>alt</code> for images. It helps SEO and accessibility.
+      </div>
+
+      <h3>Developing First Simple Webpage (Full Example)</h3>
+      <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
+  &lt;title&gt;My First Page&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;Hello World&lt;/h1&gt;
+  &lt;p&gt;This is my first HTML page.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+      <div class="tip">
+        Save as <code>index.html</code> → open with a browser.
+      </div>
+
+      <h3>HTML Comment</h3>
+      <pre><code>&lt;!-- This is a comment. It will not show in browser. --&gt;</code></pre>
+    </section>
+
+    <!-- ===================================================== -->
+    <section id="tagcats">
+      <h2>5) Developing Webpage using HTML Tag Categories</h2>
+
+      <p class="muted">
+        This section contains many tag categories with examples (formatting, table, form, headings, lists, media, code, frames, grouping).
+      </p>
+
+      <h3>Heading Tags</h3>
+      <p>Headings show document structure. Use <code>h1</code> only once for main title.</p>
+      <pre><code>&lt;h1&gt;School News&lt;/h1&gt;
+&lt;h2&gt;Term 1 Updates&lt;/h2&gt;
+&lt;h3&gt;Sports Day&lt;/h3&gt;</code></pre>
+
+      <h3>Formatting Tags</h3>
+      <pre><code>&lt;p&gt;This is &lt;strong&gt;important&lt;/strong&gt; text.&lt;/p&gt;
+&lt;p&gt;This is &lt;em&gt;emphasized&lt;/em&gt; text.&lt;/p&gt;
+&lt;p&gt;This is &lt;mark&gt;highlighted&lt;/mark&gt; text.&lt;/p&gt;</code></pre>
+
+      <h3>List Tags</h3>
+      <div class="grid2">
+        <div class="card">
+          <h4>Unordered List</h4>
+          <pre><code>&lt;ul&gt;
+  &lt;li&gt;HTML&lt;/li&gt;
+  &lt;li&gt;CSS&lt;/li&gt;
+  &lt;li&gt;JavaScript&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+        </div>
+        <div class="card">
+          <h4>Ordered List</h4>
+          <pre><code>&lt;ol&gt;
+  &lt;li&gt;Open editor&lt;/li&gt;
+  &lt;li&gt;Write HTML&lt;/li&gt;
+  &lt;li&gt;Save as .html&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+        </div>
+      </div>
+
+      <h3>Table Tags</h3>
+      <p>Tables show structured data (but do not use tables for page layout; use CSS instead).</p>
+      <pre><code>&lt;table border="1"&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Name&lt;/th&gt;
+      &lt;th&gt;Age&lt;/th&gt;
+      &lt;th&gt;Class&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Alice&lt;/td&gt;
+      &lt;td&gt;16&lt;/td&gt;
+      &lt;td&gt;S5A&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+
+      <h3>Form Tags</h3>
+      <p>Forms collect user input (login, registration, contact form).</p>
+      <pre><code>&lt;form action="/submit" method="post"&gt;
+  &lt;label for="name"&gt;Name:&lt;/label&gt;
+  &lt;input id="name" name="name" type="text" required&gt;
+
+  &lt;label for="email"&gt;Email:&lt;/label&gt;
+  &lt;input id="email" name="email" type="email"&gt;
+
+  &lt;button type="submit"&gt;Send&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+
+      <h3>Media Tags</h3>
+      <pre><code>&lt;img src="images/pic.jpg" alt="Student photo" width="200"&gt;
+
+&lt;audio controls&gt;
+  &lt;source src="media/song.mp3" type="audio/mpeg"&gt;
+&lt;/audio&gt;
+
+&lt;video controls width="320"&gt;
+  &lt;source src="media/demo.mp4" type="video/mp4"&gt;
+&lt;/video&gt;</code></pre>
+
+      <h3>Code Tags</h3>
+      <p>Use <code>&lt;code&gt;</code> for inline code and <code>&lt;pre&gt;</code> for code blocks.</p>
+      <pre><code>&lt;p&gt;Use &lt;code&gt;Ctrl + S&lt;/code&gt; to save.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;
+function hello() {
+  console.log("Hello");
+}
+&lt;/code&gt;&lt;/pre&gt;</code></pre>
+
+      <h3>HTML Frame Tags (Historical / Not Recommended)</h3>
+      <p class="muted">
+        Frames (<code>&lt;frame&gt;</code>, <code>&lt;frameset&gt;</code>) are old and not recommended in modern web development.
+        Modern websites use CSS layout and JavaScript frameworks.
+      </p>
+
+      <h3>Grouping Tags: div and span</h3>
+      <pre><code>&lt;div&gt;
+  &lt;h2&gt;News&lt;/h2&gt;
+  &lt;p&gt;Today we learned HTML.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;p&gt;This is &lt;span&gt;inline&lt;/span&gt; text.&lt;/p&gt;</code></pre>
+
+      <div class="tip">
+        <code>div</code> = block container, <code>span</code> = inline container.
+      </div>
+    </section>
+
+    <!-- ===================================================== -->
+    <section id="links">
+      <h2>6) Use of Hyperlinks</h2>
+
+      <h3>Syntax</h3>
+      <pre><code>&lt;a href="target-page.html"&gt;Go to another page&lt;/a&gt;</code></pre>
+
+      <h3>Default Link Appearance</h3>
+      <ul>
+        <li>Default: blue + underlined</li>
+        <li>Visited: purple</li>
+        <li>Hover: changes style (depends on browser/CSS)</li>
+      </ul>
+
+      <h3>Types of Links (With Examples)</h3>
+
+      <div class="grid2">
+        <div class="card">
+          <h4>External Link</h4>
+          <pre><code>&lt;a href="https://example.com" target="_blank" rel="noopener"&gt;
+  Visit Example Website
+&lt;/a&gt;</code></pre>
+          <p class="mini">Use <code>target="_blank"</code> to open new tab.</p>
+        </div>
+
+        <div class="card">
+          <h4>Internal Link</h4>
+          <pre><code>&lt;a href="about.html"&gt;About Us&lt;/a&gt;
+&lt;a href="contact.html"&gt;Contact&lt;/a&gt;</code></pre>
+        </div>
+      </div>
+
+      <div class="grid2">
+        <div class="card">
+          <h4>Link to a Section (Anchor Link)</h4>
+          <pre><code>&lt;a href="#seo"&gt;Jump to SEO Section&lt;/a&gt;
+
+&lt;h2 id="seo"&gt;SEO&lt;/h2&gt;</code></pre>
+        </div>
+
+        <div class="card">
+          <h4>Email / Phone Links</h4>
+          <pre><code>&lt;a href="mailto:teacher@school.edu"&gt;Email Teacher&lt;/a&gt;
+&lt;a href="tel:+250700000000"&gt;Call Office&lt;/a&gt;</code></pre>
+        </div>
+      </div>
+
+      <div class="warn">
+        Common mistake: wrong file name. If your file is <code>About.html</code> but you link to <code>about.html</code>,
+        it may not work on some servers.
+      </div>
+    </section>
+
+    <!-- ===================================================== -->
+    <section id="graphics">
+      <h2>7) Use of HTML Graphics</h2>
+
+      <h3>Image Tag (img) - Most Common</h3>
+      <pre><code>&lt;img src="images/banner.jpg" alt="School Banner" width="600"&gt;</code></pre>
+
+      <h3>Canvas Tag (Drawing with JavaScript)</h3>
+      <p>Canvas is used to draw shapes using JavaScript (games, charts, drawing apps).</p>
+      <pre><code>&lt;canvas id="myCanvas" width="300" height="150" style="border:1px solid #ccc;"&gt;&lt;/canvas&gt;
+
+&lt;script&gt;
+  const c = document.getElementById("myCanvas");
+  const ctx = c.getContext("2d");
+
+  // draw rectangle
+  ctx.fillStyle = "blue";
+  ctx.fillRect(20, 20, 100, 50);
+
+  // draw text
+  ctx.fillStyle = "black";
+  ctx.font = "16px Arial";
+  ctx.fillText("Canvas Demo", 20, 120);
+&lt;/script&gt;</code></pre>
+
+      <h3>SVG Tag (Vector Graphics in HTML)</h3>
+      <p>SVG is scalable and stays clear even when zoomed.</p>
+      <pre><code>&lt;svg width="240" height="120"&gt;
+  &lt;rect x="10" y="10" width="120" height="60" fill="orange" /&gt;
+  &lt;circle cx="180" cy="40" r="30" fill="green" /&gt;
+  &lt;text x="10" y="110" font-size="14"&gt;SVG Example&lt;/text&gt;
+&lt;/svg&gt;</code></pre>
+
+      <div class="tip">
+        Canvas = drawn by JS (pixels). SVG = shapes defined by XML (vector).
+      </div>
+    </section>
+
+    <!-- ===================================================== -->
+    <section id="layout">
+      <h2>8) Managing Page Layout in HTML</h2>
+
+      <h3>Definition of Page Layout</h3>
+      <p>
+        Page layout means how content is arranged on a webpage (header, navigation, main content, footer).
+      </p>
+
+      <h3>Parts of a Webpage</h3>
+      <ul>
+        <li><strong>Header</strong>: top area, site title/logo</li>
+        <li><strong>Navigation</strong>: menu links</li>
+        <li><strong>Main</strong>: main content</li>
+        <li><strong>Sidebar</strong>: extra links/info</li>
+        <li><strong>Footer</strong>: bottom info (copyright, contacts)</li>
+      </ul>
+
+      <h3>Use HTML Tags to Organize Page Layout</h3>
+      <p>Modern HTML uses semantic tags like <code>header</code>, <code>nav</code>, <code>main</code>, <code>section</code>, <code>article</code>, <code>footer</code>.</p>
+
+      <pre><code>&lt;header&gt;
+  &lt;h1&gt;My School Website&lt;/h1&gt;
+&lt;/header&gt;
+
+&lt;nav&gt;
+  &lt;a href="index.html"&gt;Home&lt;/a&gt;
+  &lt;a href="news.html"&gt;News&lt;/a&gt;
+  &lt;a href="contact.html"&gt;Contact&lt;/a&gt;
+&lt;/nav&gt;
+
+&lt;main&gt;
+  &lt;section&gt;
+    &lt;h2&gt;Welcome&lt;/h2&gt;
+    &lt;p&gt;This is the main section.&lt;/p&gt;
+  &lt;/section&gt;
+
+  &lt;article&gt;
+    &lt;h2&gt;Latest Announcement&lt;/h2&gt;
+    &lt;p&gt;School will start at 8:00 AM.&lt;/p&gt;
+  &lt;/article&gt;
+&lt;/main&gt;
+
+&lt;footer&gt;
+  &lt;p&gt;&copy; 2026 My School&lt;/p&gt;
+&lt;/footer&gt;</code></pre>
+
+      <div class="warn">
+        HTML creates structure. For real layout (columns, spacing), use CSS.
+      </div>
+    </section>
+
+    <!-- ===================================================== -->
+    <section id="seo">
+      <h2>9) Optimizing Webpage in HTML (SEO Basics)</h2>
+
+      <h3>Definition of Optimization</h3>
+      <p>
+        Optimization means improving your webpage so it loads faster, ranks better in search engines,
+        and is easier for users to understand.
+      </p>
+
+      <h3>Benefits of Applying SEO</h3>
+      <ul>
+        <li>Better ranking on Google</li>
+        <li>More visitors</li>
+        <li>Clear structure helps both users and search engines</li>
+      </ul>
+
+      <h3>Important SEO Tags and Examples</h3>
+
+      <h4>1) Meta Tags</h4>
+      <pre><code>&lt;head&gt;
+  &lt;title&gt;Student Portal - Home&lt;/title&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="description" content="Student portal for learning HTML, CSS, and JavaScript."&gt;
+  &lt;meta name="keywords" content="HTML, CSS, JavaScript, school, student portal"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
+&lt;/head&gt;</code></pre>
+
+      <h4>2) Title Tag</h4>
+      <p>Title must be meaningful and specific:</p>
+      <ul>
+        <li class="muted">Bad: <code>&lt;title&gt;Home&lt;/title&gt;</code></li>
+        <li><strong>Good:</strong> <code>&lt;title&gt;Kayonza TVET - ICT Department Home&lt;/title&gt;</code></li>
+      </ul>
+
+      <h4>3) Heading Structure</h4>
+      <pre><code>&lt;h1&gt;ICT Department&lt;/h1&gt;
+&lt;h2&gt;Courses&lt;/h2&gt;
+&lt;h3&gt;Web Development&lt;/h3&gt;</code></pre>
+
+      <h4>4) Image Alt Text</h4>
+      <pre><code>&lt;img src="images/lab.jpg" alt="Students learning in computer lab" /&gt;</code></pre>
+
+      <h4>5) Semantic Tags</h4>
+      <pre><code>&lt;header&gt;...&lt;/header&gt;
+&lt;nav&gt;...&lt;/nav&gt;
+&lt;main&gt;...&lt;/main&gt;
+&lt;article&gt;...&lt;/article&gt;
+&lt;footer&gt;...&lt;/footer&gt;</code></pre>
+
+      <div class="ok">
+        SEO rule: clear title + good headings + alt text + semantic structure.
+      </div>
+    </section>
+
+    <!-- ===================================================== -->
+    <section id="a11y">
+      <h2>10) Web Accessibility (Role, Validation, Standards)</h2>
+
+      <h3>What is Accessibility?</h3>
+      <p>
+        Web accessibility means making websites usable for everyone, including users with disabilities:
+        visual impairment, hearing impairment, motor limitations, and cognitive challenges.
+      </p>
+
+      <h3>HTML Role (ARIA) - When Needed</h3>
+      <p>
+        Most of the time, semantic HTML is enough. But sometimes we add ARIA roles for extra meaning.
+      </p>
+      <pre><code>&lt;button aria-label="Close dialog"&gt;X&lt;/button&gt;
+
+&lt;nav aria-label="Main navigation"&gt;
+  &lt;a href="index.html"&gt;Home&lt;/a&gt;
+  &lt;a href="news.html"&gt;News&lt;/a&gt;
+&lt;/nav&gt;</code></pre>
+
+      <h3>Form Accessibility (Labels)</h3>
+      <pre><code>&lt;label for="email"&gt;Email&lt;/label&gt;
+&lt;input id="email" name="email" type="email" required&gt;</code></pre>
+
+      <div class="tip">
+        Accessibility best practice: every input should have a label.
+      </div>
+
+      <h3>Keyboard Navigation</h3>
+      <ul>
+        <li>Users should be able to navigate using <code>Tab</code></li>
+        <li>Buttons and links must be reachable</li>
+        <li>Do not remove focus outline without replacement</li>
+      </ul>
+
+      <h3>Test and Standard Validation</h3>
+      <ul>
+        <li>Use HTML validation tools to check errors</li>
+        <li>Common errors: missing closing tags, wrong nesting, missing alt</li>
+      </ul>
+
+      <pre><code>&lt;!-- Wrong nesting example (bad) --&gt;
+&lt;p&gt;&lt;div&gt;Hello&lt;/div&gt;&lt;/p&gt;
+
+&lt;!-- Correct structure (good) --&gt;
+&lt;div&gt;
+  &lt;p&gt;Hello&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+
+      <div class="ok">
+        Accessibility + SEO often improve together because both require clear HTML structure.
+      </div>
+    </section>
+
+    <footer>
+      End of HTML Summary (Extended). Next: create CSS summary + JavaScript DOM summary + quiz questions.
+    </footer>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Quiz Hub</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="top">
+      <h1>Quiz Hub</h1>
+      <p class="muted">Pick a quiz and test your JavaScript knowledge.</p>
+    </header>
+
+    <!-- HOME -->
+    <section id="home" class="card">
+      <h2>Select Quiz</h2>
+      <div class="row">
+        <label class="muted">Category</label>
+        <select id="categorySelect"></select>
+      </div>
+
+      <div class="row">
+        <label class="muted">Number of Questions</label>
+        <select id="countSelect">
+          <option value="5">5</option>
+          <option value="10" selected>10</option>
+          <option value="15">15</option>
+        </select>
+      </div>
+
+      <div class="row">
+        <label class="muted">Time per Question (seconds)</label>
+        <select id="timeSelect">
+          <option value="0">No timer</option>
+          <option value="10">10</option>
+          <option value="15" selected>15</option>
+          <option value="20">20</option>
+        </select>
+      </div>
+
+      <button id="startBtn" class="btn primary">Start Quiz</button>
+
+      <div class="stats">
+        <p class="muted">Best Score: <span id="bestScore">-</span></p>
+      </div>
+    </section>
+
+    <!-- QUIZ -->
+    <section id="quiz" class="card hidden">
+      <div class="quizTop">
+        <div>
+          <h2 id="quizTitle">Quiz</h2>
+          <p class="muted" id="progressText">Question 1 / 10</p>
+        </div>
+        <div class="right">
+          <div class="pill">Score: <span id="scoreText">0</span></div>
+          <div class="pill">Time: <span id="timeText">-</span></div>
+        </div>
+      </div>
+
+      <div class="bar">
+        <div id="progressBar" class="barFill"></div>
+      </div>
+
+      <h3 id="questionText" class="question">Question text</h3>
+
+      <div id="choices" class="choices"></div>
+
+      <div class="actions">
+        <button id="skipBtn" class="btn">Skip</button>
+        <button id="nextBtn" class="btn primary" disabled>Next</button>
+      </div>
+    </section>
+
+    <!-- RESULT -->
+    <section id="result" class="card hidden">
+      <h2>Result</h2>
+      <p class="big">Your Score: <span id="finalScore">0</span></p>
+      <p class="muted">Correct: <span id="correctCount">0</span> / <span id="totalCount">0</span></p>
+
+      <div class="actions">
+        <button id="reviewBtn" class="btn">Review Answers</button>
+        <button id="retryBtn" class="btn primary">Retry</button>
+        <button id="homeBtn" class="btn">Home</button>
+      </div>
+
+      <div id="review" class="review hidden"></div>
+    </section>
+
+    <footer class="foot muted">
+      Build by students — HTML/CSS/JS only.
+    </footer>
+  </div>
+
+  <script src="questions.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

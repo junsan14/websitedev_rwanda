@@ -1,0 +1,195 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: system-ui, Arial, sans-serif;
+  margin: 0;
+  background: #f5f7fb;          /* light gray background */
+  color: #1f2937;               /* dark text */
+}
+
+.app {
+  max-width: 760px;
+  margin: 24px auto;
+  padding: 0 16px;
+}
+
+/* ===== Header ===== */
+.top {
+  margin-bottom: 16px;
+}
+
+h1 {
+  margin: 0 0 6px;
+  font-size: 28px;
+}
+
+.muted {
+  color: #6b7280;
+}
+
+/* ===== Card ===== */
+.card {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 18px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+}
+
+.hidden {
+  display: none;
+}
+
+/* ===== Form Rows ===== */
+.row {
+  display: grid;
+  gap: 6px;
+  margin: 12px 0;
+}
+
+select {
+  background: #ffffff;
+  border: 1px solid #d1d5db;
+  color: #111827;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+/* ===== Buttons ===== */
+.btn {
+  border: 1px solid #d1d5db;
+  background: #ffffff;
+  color: #111827;
+  padding: 10px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: #f3f4f6;
+}
+
+.btn.primary {
+  background: #2563eb;
+  border-color: #2563eb;
+  color: #ffffff;
+}
+
+.btn.primary:hover {
+  background: #1d4ed8;
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ===== Quiz Top ===== */
+.quizTop {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+}
+
+.right {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.pill {
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 14px;
+}
+
+/* ===== Progress Bar ===== */
+.bar {
+  height: 10px;
+  background: #e5e7eb;
+  border-radius: 999px;
+  overflow: hidden;
+  margin: 14px 0 20px;
+}
+
+.barFill {
+  height: 100%;
+  width: 0%;
+  background: #2563eb;
+}
+
+/* ===== Question ===== */
+.question {
+  margin: 0 0 14px;
+  font-size: 18px;
+}
+
+/* ===== Choices ===== */
+.choices {
+  display: grid;
+  gap: 10px;
+}
+
+.choice {
+  text-align: left;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #d1d5db;
+  background: #ffffff;
+  cursor: pointer;
+}
+
+.choice:hover {
+  background: #f3f4f6;
+}
+
+.choice.correct {
+  border-color: #16a34a;
+  background: #ecfdf5;
+}
+
+.choice.wrong {
+  border-color: #dc2626;
+  background: #fef2f2;
+}
+
+/* ===== Actions ===== */
+.actions {
+  margin-top: 16px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* ===== Result ===== */
+.big {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+/* ===== Review ===== */
+.review {
+  margin-top: 16px;
+  display: grid;
+  gap: 10px;
+}
+
+.reviewItem {
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 12px;
+}
+
+/* ===== Footer ===== */
+.foot {
+  margin-top: 16px;
+  text-align: center;
+  font-size: 14px;
+  color: #6b7280;
+}
