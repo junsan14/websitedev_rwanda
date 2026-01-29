@@ -31,6 +31,10 @@ const retryBtn = document.getElementById("retryBtn");
 const homeBtn = document.getElementById("homeBtn");
 const reviewEl = document.getElementById("review");
 
+// IMPORTANT: QUESTION_BANK must be loaded from questions.js
+// Example in HTML: <script type="module" src="./questions.js"></script>
+// Make sure it provides global QUESTION_BANK or import it in module version.
+
 let quizQuestions = [];
 let currentIndex = 0;
 let score = 0;
@@ -59,8 +63,9 @@ function shuffle(arr) {
   return a;
 }
 
+// ✅ topic instead of category
 function getCategories() {
-  return [...new Set(QUESTION_BANK.map(q => q.category))].sort();
+  return [...new Set(QUESTION_BANK.map((q) => q.topic))].sort();
 }
 
 function loadBest() {
@@ -77,7 +82,7 @@ function saveBest(newScore) {
 function buildCategorySelect() {
   const cats = getCategories();
   categorySelect.innerHTML = "";
-  cats.forEach(c => {
+  cats.forEach((c) => {
     const opt = document.createElement("option");
     opt.value = c;
     opt.textContent = c;
@@ -90,14 +95,16 @@ function startQuiz() {
   const count = Number(countSelect.value);
   timePerQ = Number(timeSelect.value);
 
-  const pool = QUESTION_BANK.filter(q => q.category === category);
+  // ✅ filter by topic instead of category
+  const pool = QUESTION_BANK.filter((q) => q.topic === category);
+
   quizQuestions = shuffle(pool).slice(0, Math.min(count, pool.length));
 
   currentIndex = 0;
   score = 0;
   correctCount = 0;
 
-  quizTitle.textContent = `Category: ${category}`;
+  quizTitle.textContent = `Topic: ${category}`;
   scoreText.textContent = score;
 
   show(quizEl);
@@ -140,7 +147,8 @@ function renderQuestion() {
 
   questionText.textContent = q.question;
 
-  q.choices.forEach((text, idx) => {
+  // ✅ options instead of choices
+  q.options.forEach((text, idx) => {
     const btn = document.createElement("button");
     btn.className = "choice";
     btn.textContent = text;
@@ -155,7 +163,6 @@ function selectChoice(idx) {
   selectedChoiceIndex = idx;
   nextBtn.disabled = false;
 
-  // highlight selected
   [...choicesEl.children].forEach((el, i) => {
     el.style.outline = i === idx ? "2px solid #2f6df6" : "none";
   });
@@ -165,7 +172,8 @@ function lockAndGoNext(auto = false) {
   clearTimer();
   const q = quizQuestions[currentIndex];
 
-  const isCorrect = selectedChoiceIndex === q.answerIndex;
+  // ✅ answer (index) instead of answerIndex
+  const isCorrect = selectedChoiceIndex === q.answer;
 
   // Score rule
   if (!auto && selectedChoiceIndex !== null) {
@@ -204,7 +212,7 @@ function buildReview() {
     item.className = "reviewItem";
     item.innerHTML = `
       <div><strong>Q${idx + 1}.</strong> ${q.question}</div>
-      <div class="muted">Answer: <strong>${q.choices[q.answerIndex]}</strong></div>
+      <div class="muted">Answer: <strong>${q.options[q.answer]}</strong></div>
       <div class="muted">Explanation: ${q.explanation || "-"}</div>
     `;
     reviewEl.appendChild(item);

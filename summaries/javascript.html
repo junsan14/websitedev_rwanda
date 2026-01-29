@@ -1,50 +1,884 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>JavaScript Summary</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>JavaScript Summary (With Explanations) - Website Development</title>
+
+  <style>
+    :root{
+      --bg:#ffffff;
+      --text:#111827;
+      --muted:#6b7280;
+      --line:#e5e7eb;
+      --soft:#f9fafb;
+      --card:#ffffff;
+      --codebg:#0b0f14;
+      --codefg:#e6edf3;
+      --accent:#2563eb;
+      --accent2:#0ea5e9;
+      --warn:#fb7185;
+      --shadow: 0 10px 30px rgba(0,0,0,.06);
+      --radius: 14px;
+    }
+    *{ box-sizing:border-box; }
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, "Noto Sans", "Helvetica Neue", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+    header{
+      position: sticky;
+      top: 0;
+      background: rgba(255,255,255,.9);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
+      z-index: 50;
+    }
+    .wrap{
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 18px;
+    }
+    .top{
+      display:flex;
+      gap:14px;
+      align-items:center;
+      justify-content:space-between;
+      flex-wrap:wrap;
+    }
+    .brand{
+      display:flex;
+      gap:12px;
+      align-items:center;
+    }
+    .logo{
+      width:42px;height:42px;border-radius:12px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      box-shadow: var(--shadow);
+    }
+    .brand h1{
+      font-size: 18px;
+      margin:0;
+    }
+    .brand p{
+      margin:0;
+      font-size: 12px;
+      color: var(--muted);
+    }
+    nav{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+    nav a{
+      text-decoration:none;
+      color: var(--text);
+      font-size: 13px;
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: #fff;
+    }
+    nav a:hover{
+      border-color:#c7d2fe;
+      background:#f5f7ff;
+    }
+
+    main{
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 28px 18px 80px;
+    }
+    .hero{
+      border:1px solid var(--line);
+      background: linear-gradient(180deg, #ffffff 0%, #fbfdff 100%);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 22px;
+      margin-bottom: 20px;
+    }
+    .hero h2{ margin:0 0 6px; font-size: 26px; }
+    .hero p{ margin:0; color: var(--muted); max-width: 85ch; }
+
+    h2{
+      margin: 34px 0 10px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--line);
+      font-size: 22px;
+    }
+    h3{ margin: 18px 0 6px; font-size: 18px; }
+    p{ margin: 10px 0; }
+
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 14px;
+      margin: 14px 0 8px;
+    }
+    .card{
+      grid-column: span 12;
+      border: 1px solid var(--line);
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 16px;
+    }
+    .col6{ grid-column: span 6; }
+    .col4{ grid-column: span 4; }
+    .col8{ grid-column: span 8; }
+    @media (max-width: 900px){
+      .col6,.col4,.col8{ grid-column: span 12; }
+    }
+
+    .note{
+      background:#eef6ff;
+      border-left:6px solid var(--accent);
+      padding: 14px;
+      border-radius: 10px;
+      margin: 12px 0;
+      font-weight: 650;
+    }
+    .warn{
+      background:#fff1f2;
+      border-left:6px solid var(--warn);
+      padding: 14px;
+      border-radius: 10px;
+      margin: 12px 0;
+      font-weight: 650;
+    }
+    .tag{
+      display:inline-block;
+      font-size: 12px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: var(--soft);
+      color: var(--muted);
+      margin-right: 6px;
+      margin-bottom: 6px;
+    }
+
+    code{
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      background: #f3f4f6;
+      padding: 2px 6px;
+      border-radius: 8px;
+      font-size: .95em;
+    }
+    pre{
+      margin: 12px 0;
+      background: var(--codebg);
+      color: var(--codefg);
+      padding: 14px;
+      border-radius: 12px;
+      overflow-x: auto;
+      border: 1px solid rgba(255,255,255,.08);
+      box-shadow: 0 12px 30px rgba(0,0,0,.12);
+    }
+    pre code{
+      background: transparent;
+      padding: 0;
+      border-radius: 0;
+      color: inherit;
+      font-size: 13.5px;
+      line-height: 1.6;
+      display: block;
+      white-space: pre;
+    }
+
+    table{
+      width:100%;
+      border-collapse: collapse;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      overflow:hidden;
+      margin: 12px 0;
+    }
+    th, td{
+      border-bottom: 1px solid var(--line);
+      padding: 10px;
+      text-align:left;
+      vertical-align: top;
+      font-size: 14px;
+    }
+    th{ background:#f9fafb; font-weight: 750; }
+
+    .mini{ font-size: 13px; color: var(--muted); }
+    .two-col{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    @media (max-width: 900px){
+      .two-col{ grid-template-columns: 1fr; }
+    }
+
+    footer{
+      border-top:1px solid var(--line);
+      padding: 22px 18px;
+      background:#fff;
+      color: var(--muted);
+      text-align:center;
+    }
+  </style>
 </head>
+
 <body>
-<div class="container">
-  <header>
-    <h1>JavaScript Summary</h1>
-    <p class="muted">Behavior and interaction</p>
-  </header>
+<header>
+  <div class="wrap top">
+    <div class="brand">
+      <div class="logo"></div>
+      <div>
+        <h1>JavaScript Summary (With Explanations)</h1>
+        <p>Each topic has explanation + examples (HTML/CSS/JS only)</p>
+      </div>
+    </div>
+    <nav>
+      <a href="#intro">Intro</a>
+      <a href="#concepts">Concepts</a>
+      <a href="#integrate">Integration</a>
+      <a href="#vars">Variables</a>
+      <a href="#types">Types</a>
+      <a href="#ops">Operators</a>
+      <a href="#strings">Strings</a>
+      <a href="#condition">Condition</a>
+      <a href="#loops">Loops</a>
+      <a href="#funcs">Functions</a>
+      <a href="#objects">Objects</a>
+      <a href="#arrays">Arrays</a>
+      <a href="#dom">DOM</a>
+      <a href="#events">Events</a>
+      <a href="#styles">Styles</a>
+      <a href="#window">Window</a>
+      <a href="#validation">Validation</a>
+      <a href="#async">Async</a>
+      <a href="#regex">RegEx</a>
+      <a href="#errors">Errors</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero" id="intro">
+    <h2>Introduction to JavaScript</h2>
+    <p>
+      JavaScript is the language that makes websites interactive.
+      HTML builds the structure, CSS controls the design, and JavaScript adds behavior (logic + interaction).
+      In this document, every topic includes a short explanation and practical examples you can copy.
+    </p>
+    <div class="note">
+      Rule: If the website needs “click / type / change / validate / animate”, you use JavaScript.
+    </div>
+  </section>
+
+  <h2 id="concepts">1) Definition, application, and key concepts</h2>
+
+  <div class="grid">
+    <div class="card col6">
+      <h3>Definition of JavaScript</h3>
+      <p>
+        JavaScript is a programming language mainly used in web browsers. It can read and update HTML/CSS,
+        respond to user actions (click, input), and communicate with servers.
+      </p>
+      <pre><code>// Example: simple JS running in browser
+console.log("Hello JavaScript");</code></pre>
+    </div>
+
+    <div class="card col6">
+      <h3>Application of JavaScript</h3>
+      <p>
+        JavaScript is used for user interaction and dynamic updates. Common use cases:
+      </p>
+      <ul>
+        <li>Form validation (check required fields)</li>
+        <li>DOM update (change text, create elements)</li>
+        <li>UI behavior (tabs, modal, dropdown)</li>
+        <li>Animation (class toggle + CSS transition)</li>
+        <li>Saving data (localStorage)</li>
+      </ul>
+      <pre><code>// Example: change text after click
+// (DOM example is later in the DOM section)</code></pre>
+    </div>
+  </div>
 
   <div class="card">
-    <h2>1. Variables</h2>
+    <h3>JavaScript key concepts (with explanation)</h3>
+    <p class="mini">
+      These are words you must know to read and write JavaScript code.
+    </p>
+    <div>
+      <span class="tag">Variable</span>
+      <span class="tag">Data Type</span>
+      <span class="tag">Value</span>
+      <span class="tag">Operator</span>
+      <span class="tag">Expression</span>
+      <span class="tag">Keyword</span>
+      <span class="tag">Comment</span>
+    </div>
+
+    <h3>Variable</h3>
+    <p>
+      A variable is a “box” that stores a value. We use it so we can reuse data later.
+    </p>
+    <pre><code>let name = "Alice"; // store a string value
+let age = 20;       // store a number value</code></pre>
+
+    <h3>Data Types</h3>
+    <p>
+      Data type is the kind of value stored (number, string, boolean, object...).
+      Types matter because different types behave differently (ex: "2" + 2 becomes "22").
+    </p>
+    <pre><code>let n = 10;         // number
+let s = "10";       // string
+let b = true;       // boolean</code></pre>
+
+    <h3>Operators</h3>
+    <p>
+      Operators do actions: add, compare, assign. Example: <code>+</code>, <code>===</code>, <code>=</code>.
+    </p>
+    <pre><code>let total = 10 + 5;
+let ok = total === 15;</code></pre>
+
+    <h3>Expressions</h3>
+    <p>
+      An expression is code that produces a value. Example: <code>2+3</code> produces <code>5</code>.
+    </p>
+    <pre><code>2 + 3           // -> 5
+age >= 18       // -> true/false
+"Hi " + name    // -> string</code></pre>
+
+    <h3>Keywords and comments</h3>
+    <p>
+      Keywords are reserved words used by the language. Comments are notes for humans.
+    </p>
+    <pre><code>// keyword examples:
+let, const, if, for, function, return
+
+// comment examples:
+// This is a single line comment
+/*
+This is a multi line comment
+*/</code></pre>
+  </div>
+
+  <h2 id="integrate">2) Integration of JavaScript to HTML</h2>
+  <div class="card">
+    <h3>Why integration matters</h3>
+    <p>
+      HTML alone cannot run logic. JavaScript must be loaded using a <code>&lt;script&gt;</code> tag.
+      Where you place the script matters because the browser reads HTML from top to bottom.
+    </p>
+
+    <h3>JavaScript inside HTML (head vs body)</h3>
+    <div class="two-col">
+      <div>
+        <p><b>In &lt;head&gt;</b> (can run too early)</p>
+        <pre><code>&lt;head&gt;
+  &lt;script&gt;
+    console.log("head script");
+  &lt;/script&gt;
+&lt;/head&gt;</code></pre>
+        <div class="warn">
+          If you try to access HTML elements here, they may not exist yet.
+        </div>
+      </div>
+      <div>
+        <p><b>Before &lt;/body&gt;</b> (recommended)</p>
+        <pre><code>&lt;body&gt;
+  &lt;h1 id="title"&gt;Hello&lt;/h1&gt;
+
+  &lt;script&gt;
+    console.log("body-end script");
+  &lt;/script&gt;
+&lt;/body&gt;</code></pre>
+        <div class="note">
+          Best for beginners: script at the end so the HTML loads first.
+        </div>
+      </div>
+    </div>
+
+    <h3>External JavaScript file</h3>
+    <p>
+      Using an external file keeps code clean. You write JS in <code>app.js</code> and link it.
+    </p>
+    <pre><code>&lt;script src="app.js"&gt;&lt;/script&gt;</code></pre>
+
+    <h3>CDN (external library link)</h3>
+    <p>
+      A CDN loads a library from the internet. This is optional for your course.
+    </p>
+    <pre><code>&lt;script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"&gt;&lt;/script&gt;</code></pre>
+  </div>
+
+  <h2 id="vars">3) Variables</h2>
+  <div class="card">
+    <h3>What variables do</h3>
+    <p>
+      Variables store data, and you can use that data in calculations, conditions, and DOM updates.
+      Use <code>let</code> for changeable values, and <code>const</code> for fixed references.
+    </p>
+
+    <pre><code>let score = 10;   // can change
+score = 20;
+
+const school = "RTB";  // should not change</code></pre>
+
+    <h3>Naming conventions</h3>
+    <p>
+      Use meaningful names. Use <b>camelCase</b> for variables.
+    </p>
+    <pre><code>let studentName = "Alice";
+let totalScore = 90;
+const MAX_USERS = 100;</code></pre>
+
+    <h3>Re-declaration rule</h3>
+    <p>
+      <code>let</code> and <code>const</code> cannot be redeclared in the same scope.
+      This prevents confusing bugs.
+    </p>
+    <pre><code>let x = 1;
+// let x = 2; // ❌ error
+
+var y = 1;
+var y = 2; // ✅ allowed (but not recommended)</code></pre>
+  </div>
+
+  <h2 id="types">4) Data types + type casting</h2>
+  <div class="card">
+    <h3>Why types matter</h3>
+    <p>
+      JavaScript is dynamically typed, meaning you don’t declare a type, but the value has a type.
+      Type mistakes cause common bugs like string-number confusion.
+    </p>
+
+    <h3>Primitive vs reference types</h3>
+    <pre><code>// Primitive
+let n = 10;         // number
+let s = "10";       // string
+let b = true;       // boolean
+let u;              // undefined
+let z = null;       // null
+
+// Reference
+let arr = [1,2,3];            // array
+let obj = {name:"A"};         // object
+let fn = () => "hello";       // function</code></pre>
+
+    <h3>Type casting (convert types)</h3>
+    <p>
+      When you get user input from HTML, it is usually a string. Convert to number if needed.
+    </p>
+    <pre><code>let inputValue = "20";      // string from input
+let num = Number(inputValue); // 20 (number)
+
+let a = "12.9";
+parseInt(a);   // 12
+parseFloat(a); // 12.9</code></pre>
+
+    <div class="warn">
+      Example bug: <code>"2" + 2</code> becomes <code>"22"</code>.
+      Use <code>Number()</code> when you want math.
+    </div>
+  </div>
+
+  <h2 id="ops">5) Operators</h2>
+  <div class="card">
+    <h3>Why operators are important</h3>
+    <p>
+      Operators allow math, comparisons, and logic. They are used everywhere in conditions and loops.
+    </p>
+
+    <h3>Arithmetic + assignment</h3>
+    <pre><code>let x = 10;
+x += 5; // 15
+x -= 3; // 12
+x *= 2; // 24
+x /= 4; // 6
+x %= 4; // 2</code></pre>
+
+    <h3>Comparison (use ===)</h3>
+    <p>
+      Use <code>===</code> for strict comparison (type + value).
+      <code>==</code> can cause unexpected conversions.
+    </p>
+    <pre><code>5 == "5"   // true (loose)
+5 === "5"  // false (strict)</code></pre>
+
+    <h3>Logical operators</h3>
+    <pre><code>let hasAccount = true;
+let hasPassword = false;
+
+hasAccount && hasPassword // false
+hasAccount || hasPassword // true
+!hasAccount               // false</code></pre>
+
+    <h3>Ternary operator</h3>
+    <p>
+      A short if-else. Good for simple conditions.
+    </p>
+    <pre><code>let age = 17;
+let type = age >= 18 ? "Adult" : "Child";</code></pre>
+  </div>
+
+  <h2 id="strings">6) Strings</h2>
+  <div class="card">
+    <h3>Why strings matter</h3>
+    <p>
+      Most website data is text: names, emails, messages. You will often format and validate strings.
+    </p>
+
+    <h3>Template literals (recommended)</h3>
     <pre><code>let name = "Alice";
-const age = 20;</code></pre>
+let msg = `Hello ${name}, welcome!`;</code></pre>
+
+    <h3>Common string methods</h3>
+    <pre><code>let t = "  JavaScript  ";
+
+t.trim();          // remove spaces
+t.toUpperCase();   // uppercase
+t.includes("Java");// search
+t.replace("Java","Type");</code></pre>
   </div>
 
+  <h2 id="condition">7) Condition statements</h2>
   <div class="card">
-    <h2>2. DOM Manipulation</h2>
-    <pre><code>const title = document.getElementById("title");
-title.innerHTML = "Hello";</code></pre>
-  </div>
+    <h3>Why conditions are used</h3>
+    <p>
+      Conditions make decisions. Example: if login is correct → go to dashboard, else show error.
+    </p>
 
-  <div class="card">
-    <h2>3. Events</h2>
-    <pre><code>button.addEventListener("click", () => {
-  alert("Clicked");
-});</code></pre>
-  </div>
+    <pre><code>let score = 75;
 
-  <div class="card">
-    <h2>4. Functions & Loops</h2>
-    <pre><code>function add(a, b) {
-  return a + b;
-}
+if(score >= 80){
+  console.log("A");
+}else if(score >= 60){
+  console.log("B");
+}else{
+  console.log("C");
+}</code></pre>
 
-for (let i = 0; i < 5; i++) {
-  console.log(i);
+    <h3>Switch (good for fixed options)</h3>
+    <pre><code>let day = "Mon";
+
+switch(day){
+  case "Mon":
+    console.log("Start");
+    break;
+  case "Fri":
+    console.log("Finish");
+    break;
+  default:
+    console.log("Normal");
 }</code></pre>
   </div>
 
-  <div class="rule">
-    JavaScript makes the website interactive.
+  <h2 id="loops">8) Loops</h2>
+  <div class="card">
+    <h3>Why loops are used</h3>
+    <p>
+      Loops repeat code. Example: show many students from an array, or calculate total marks.
+    </p>
+
+    <h3>For loop (most common)</h3>
+    <pre><code>for(let i = 1; i <= 5; i++){
+  console.log(i);
+}</code></pre>
+
+    <h3>For/of (arrays)</h3>
+    <pre><code>const nums = [10, 20, 30];
+
+for(const n of nums){
+  console.log(n);
+}</code></pre>
+
+    <h3>While loop</h3>
+    <pre><code>let x = 3;
+while(x > 0){
+  console.log(x);
+  x--;
+}</code></pre>
   </div>
-</div>
+
+  <h2 id="funcs">9) Functions</h2>
+  <div class="card">
+    <h3>Why functions exist</h3>
+    <p>
+      Functions organize code into reusable blocks. Instead of repeating logic, you call a function.
+    </p>
+
+    <h3>Function definition + call</h3>
+    <pre><code>function add(a, b){
+  return a + b;
+}
+
+let result = add(3, 4); // 7</code></pre>
+
+    <h3>Arrow function</h3>
+    <pre><code>const multiply = (a, b) => a * b;</code></pre>
+
+    <h3>Closure (simple explanation)</h3>
+    <p>
+      A closure happens when a function remembers variables from its outer function.
+      This can create “private” state like a counter.
+    </p>
+    <pre><code>function makeCounter(){
+  let count = 0;
+  return function(){
+    count++;
+    return count;
+  }
+}
+
+const counter = makeCounter();
+counter(); // 1
+counter(); // 2</code></pre>
+  </div>
+
+  <h2 id="objects">10) Objects</h2>
+  <div class="card">
+    <h3>Why objects are used</h3>
+    <p>
+      Objects group related data and functions. Example: a student has name, age, class, and methods.
+    </p>
+
+    <pre><code>const student = {
+  name: "Alice",
+  age: 18,
+  className: "S6",
+  sayHi(){
+    return "Hi " + this.name;
+  }
+};
+
+student.name;      // "Alice"
+student.sayHi();   // "Hi Alice"</code></pre>
+
+    <h3>Map and Set</h3>
+    <p>
+      Use <code>Set</code> for unique values, and <code>Map</code> for key-value storage (like object but more flexible).
+    </p>
+    <pre><code>const set = new Set([1,1,2]); // {1,2}
+set.add(3);
+
+const map = new Map();
+map.set("name", "Jun");
+map.set("age", 30);</code></pre>
+  </div>
+
+  <h2 id="arrays">11) Arrays</h2>
+  <div class="card">
+    <h3>Why arrays are important</h3>
+    <p>
+      Arrays store lists of values. Websites often show lists: students, posts, products, messages.
+    </p>
+
+    <pre><code>const students = ["Alice", "Bob", "Chris"];
+students.push("Diana");</code></pre>
+
+    <h3>Array iteration (modern)</h3>
+    <pre><code>const nums = [1,2,3,4];
+
+const doubled = nums.map(n => n * 2);
+const even = nums.filter(n => n % 2 === 0);
+const total = nums.reduce((sum, n) => sum + n, 0);</code></pre>
+  </div>
+
+  <h2 id="dom">12) DOM (Document Object Model)</h2>
+  <div class="card">
+    <h3>What is DOM?</h3>
+    <p>
+      The DOM is the browser’s representation of your HTML as objects.
+      JavaScript can select elements and change them.
+    </p>
+
+    <h3>Select elements</h3>
+    <pre><code>document.getElementById("title");
+document.querySelector(".box");
+document.querySelectorAll(".item");</code></pre>
+
+    <h3>Update text/content</h3>
+    <pre><code>const el = document.getElementById("result");
+
+el.textContent = "Safe text";
+el.innerHTML = "&lt;b&gt;Bold text&lt;/b&gt;";</code></pre>
+
+    <div class="warn">
+      Use <code>innerHTML</code> carefully. Never insert user input directly (security risk).
+    </div>
+  </div>
+
+  <h2 id="events">13) Events</h2>
+  <div class="card">
+    <h3>What is an event?</h3>
+    <p>
+      Events happen when users interact: click, input, submit, keypress. JavaScript can “listen” and run code.
+    </p>
+
+    <pre><code>&lt;button id="btn"&gt;Click&lt;/button&gt;
+&lt;p id="msg"&gt;&lt;/p&gt;
+
+&lt;script&gt;
+  const btn = document.getElementById("btn");
+  const msg = document.getElementById("msg");
+
+  btn.addEventListener("click", () => {
+    msg.textContent = "Button clicked!";
+  });
+&lt;/script&gt;</code></pre>
+  </div>
+
+  <h2 id="styles">14) JS + HTML styles</h2>
+  <div class="card">
+    <h3>Two ways to change style</h3>
+    <p>
+      (1) Change inline style directly, (2) Toggle a CSS class (recommended for clean code).
+    </p>
+
+    <h3>Inline style</h3>
+    <pre><code>const box = document.getElementById("box");
+box.style.backgroundColor = "lightblue";
+box.style.padding = "20px";</code></pre>
+
+    <h3>Class toggle (recommended)</h3>
+    <pre><code>// CSS:
+.active { transform: translateY(-2px); transition: .2s; }
+
+// JS:
+box.classList.toggle("active");</code></pre>
+  </div>
+
+  <h2 id="window">15) Window object</h2>
+  <div class="card">
+    <h3>What is window?</h3>
+    <p>
+      The <code>window</code> object represents the browser window. It provides methods like alert and timers,
+      and storage like localStorage.
+    </p>
+
+    <pre><code>alert("Hello");
+setTimeout(() => console.log("after 1s"), 1000);
+
+localStorage.setItem("name", "Jun");
+localStorage.getItem("name");</code></pre>
+  </div>
+
+  <h2 id="validation">16) Form validation</h2>
+  <div class="card">
+    <h3>Why validate?</h3>
+    <p>
+      Validation prevents bad input. Frontend validation improves user experience,
+      but backend validation is still required for security.
+    </p>
+
+    <pre><code>&lt;form id="signup"&gt;
+  &lt;input id="email" placeholder="Email"&gt;
+  &lt;input id="pass" type="password" placeholder="Password"&gt;
+  &lt;button&gt;Register&lt;/button&gt;
+  &lt;p id="err"&gt;&lt;/p&gt;
+&lt;/form&gt;
+
+&lt;script&gt;
+  const form = document.getElementById("signup");
+  const err = document.getElementById("err");
+
+  form.addEventListener("submit", (e) =&gt; {
+    e.preventDefault();
+
+    const email = document.getElementById("email").value.trim();
+    const pass = document.getElementById("pass").value;
+
+    if(email === "" || pass === ""){
+      err.textContent = "All fields are required.";
+      err.style.color = "red";
+      return;
+    }
+
+    if(!email.includes("@")){
+      err.textContent = "Email must include @";
+      err.style.color = "red";
+      return;
+    }
+
+    if(pass.length &lt; 6){
+      err.textContent = "Password must be at least 6 characters.";
+      err.style.color = "red";
+      return;
+    }
+
+    err.textContent = "OK!";
+    err.style.color = "green";
+  });
+&lt;/script&gt;</code></pre>
+  </div>
+
+  <h2 id="async">17) Async (Promise + async/await)</h2>
+  <div class="card">
+    <h3>Why async exists</h3>
+    <p>
+      Some operations take time: fetching data, waiting for a timer, reading a file.
+      Async lets your page stay responsive while waiting.
+    </p>
+
+    <pre><code>// Promise
+const p = new Promise((resolve) => {
+  setTimeout(() => resolve("done"), 1000);
+});
+
+p.then(msg => console.log(msg));
+
+// async/await
+async function run(){
+  const msg = await p;
+  console.log("await:", msg);
+}
+run();</code></pre>
+  </div>
+
+  <h2 id="regex">18) Regular expression (RegEx)</h2>
+  <div class="card">
+    <h3>Why RegEx is used</h3>
+    <p>
+      RegEx is used to match patterns in strings (emails, passwords, search, validation).
+    </p>
+
+    <pre><code>const email = "test@example.com";
+const ok = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);</code></pre>
+  </div>
+
+  <h2 id="errors">19) Error handling</h2>
+  <div class="card">
+    <h3>Why error handling matters</h3>
+    <p>
+      Errors will happen: wrong input, missing variable, network failure.
+      Try/catch helps your app not crash and allows you to show messages.
+    </p>
+
+    <pre><code>try{
+  JSON.parse("{bad json}");
+}catch(err){
+  console.log("Error:", err.message);
+}</code></pre>
+
+    <h3>Throw your own error</h3>
+    <pre><code>function checkAge(age){
+  if(age &lt; 0){
+    throw new Error("Age cannot be negative");
+  }
+}
+try{
+  checkAge(-1);
+}catch(e){
+  console.log(e.message);
+}</code></pre>
+  </div>
+
+</main>
+
+<footer>
+  JavaScript Summary (With Explanations) • HTML/CSS/JS only
+</footer>
 </body>
 </html>
