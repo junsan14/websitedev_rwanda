@@ -1,0 +1,91 @@
+<!-- index.html -->
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Code Questions (Write + Reveal)</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <main class="container">
+      <!-- HOME -->
+      <section id="home" class="card">
+        <a href="../index.html">TOP PAGE</a>
+        <h1>Code Questions</h1>
+        <p class="muted">
+          Choose a topic. You will see one question at a time: write your code,
+          reveal the answer, then go next.
+        </p>
+
+        <div class="row wrap">
+          <label class="field">
+            Topic
+            <select id="topicSelect"></select>
+          </label>
+
+          <label class="field">
+            Count
+            <select id="countSelect">
+              <option value="3">3</option>
+              <option value="5" selected>5</option>
+              <option value="10">10</option>
+            </select>
+          </label>
+
+          <button id="startBtn" class="btn primary">Start</button>
+        </div>
+      </section>
+
+      <!-- QUIZ -->
+      <section id="quiz" class="card hidden">
+        <div class="top">
+          <div>
+            <h2 id="quizTitle">Topic</h2>
+            <div class="muted" id="progressText">Question 1 / 5</div>
+          </div>
+          <button id="homeBtn" class="btn">Home</button>
+        </div>
+
+        <div class="qHeader">
+          <h3 id="qTitle">Title</h3>
+          <p id="qPrompt" class="muted">Prompt</p>
+        </div>
+
+        <!-- STARTER -->
+        <div class="codeBlock">
+          <div class="codeLabel">Starter</div>
+          <pre><code id="starterCode"></code></pre>
+        </div>
+
+        <!-- STUDENT CODE -->
+        <div class="codeBlock">
+          <div class="codeLabel">Your Code</div>
+          <textarea
+            id="studentCode"
+            class="codeEditor"
+            placeholder="Write your code here..."
+          ></textarea>
+        </div>
+
+        <div class="row">
+          <button id="answerBtn" class="btn">Show Answer</button>
+          <button id="nextBtn" class="btn primary" disabled>Next</button>
+        </div>
+
+        <!-- ANSWER -->
+        <div id="answerArea" class="answer hidden">
+          <div class="codeBlock">
+            <div class="codeLabel">Answer</div>
+            <pre><code id="answerCode"></code></pre>
+          </div>
+          <p class="muted" id="explanationText"></p>
+        </div>
+      </section>
+    </main>
+
+    <!-- IMPORTANT ORDER -->
+    <script src="./questions.js"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>

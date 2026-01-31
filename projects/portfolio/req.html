@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio Project Requirements</title>
+  <style>
+    body { font-family: Arial, Helvetica, sans-serif; line-height: 1.5; margin: 24px; }
+    h1 { margin-bottom: 6px; }
+    .note { background: #f6f7f9; border: 1px solid #e5e7eb; padding: 12px; border-radius: 10px; }
+    hr { margin: 24px 0; }
+    section { margin: 18px 0; }
+    .mockup-wrap { border: 1px solid #e5e7eb; border-radius: 12px; padding: 14px; }
+    .mockup-title { margin: 0 0 10px; font-size: 18px; }
+    ul, ol { margin-top: 8px; }
+    code { background:#f3f4f6; padding: 2px 6px; border-radius: 6px; }
+  </style>
+</head>
+<body>
+
+  <h1>Portfolio Website Project</h1>
+  <p class="note">
+    Your task: build a <strong>one-page portfolio</strong> that matches the <strong>design image (mockup)</strong> below.
+    Copy the layout, spacing, and section order as closely as possible.
+  </p>
+
+  <hr />
+
+  <!-- Embedded SVG Design Mockup -->
+  <div class="mockup-wrap">
+    <h2 class="mockup-title">Design Image (SVG Mockup)</h2>
+
+    <!--
+      Students should match this layout in their real page.
+      This SVG is a simple "wireframe" design they can follow.
+    -->
+    <svg
+      viewBox="0 0 980 620"
+      width="100%"
+      height="auto"
+      role="img"
+      aria-label="Portfolio website design mockup"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <!-- Background -->
+      <rect x="0" y="0" width="980" height="620" fill="#ffffff"/>
+      <rect x="20" y="20" width="940" height="580" rx="18" fill="#f7f8fb" stroke="#d8dbe3" />
+
+      <!-- Top Navbar -->
+      <rect x="50" y="50" width="880" height="64" rx="14" fill="#ffffff" stroke="#d8dbe3"/>
+      <rect x="70" y="68" width="120" height="28" rx="10" fill="#e9ecf5"/>
+      <text x="84" y="88" font-size="14" fill="#3a3f55" font-family="Arial">Your Name</text>
+
+      <!-- Nav links -->
+      <g font-family="Arial" font-size="13" fill="#3a3f55">
+        <rect x="560" y="70" width="70" height="24" rx="10" fill="#eef1f8"/>
+        <text x="582" y="87">Home</text>
+
+        <rect x="640" y="70" width="70" height="24" rx="10" fill="#eef1f8"/>
+        <text x="660" y="87">About</text>
+
+        <rect x="720" y="70" width="92" height="24" rx="10" fill="#eef1f8"/>
+        <text x="740" y="87">Favorites</text>
+
+        <rect x="822" y="70" width="78" height="24" rx="10" fill="#eef1f8"/>
+        <text x="843" y="87">Contact</text>
+      </g>
+
+      <!-- HERO -->
+      <rect x="50" y="135" width="880" height="170" rx="18" fill="#ffffff" stroke="#d8dbe3"/>
+      <!-- Hero left text -->
+      <text x="80" y="175" font-size="28" font-family="Arial" fill="#1f2a44">Hi, I'm ____</text>
+      <rect x="80" y="195" width="380" height="14" rx="7" fill="#e9ecf5"/>
+      <rect x="80" y="218" width="320" height="14" rx="7" fill="#e9ecf5"/>
+      <rect x="80" y="241" width="260" height="14" rx="7" fill="#e9ecf5"/>
+
+      <!-- Hero button -->
+      <rect x="80" y="262" width="150" height="32" rx="12" fill="#dbe7ff" stroke="#c4d6ff"/>
+      <text x="105" y="283" font-size="13" font-family="Arial" fill="#1f2a44">Contact Me</text>
+
+      <!-- Hero right avatar -->
+      <circle cx="820" cy="220" r="55" fill="#eef1f8" stroke="#d8dbe3"/>
+      <text x="785" y="223" font-size="12" font-family="Arial" fill="#3a3f55">Profile</text>
+      <text x="793" y="238" font-size="12" font-family="Arial" fill="#3a3f55">Photo</text>
+
+      <!-- ABOUT -->
+      <rect x="50" y="320" width="430" height="180" rx="18" fill="#ffffff" stroke="#d8dbe3"/>
+      <text x="80" y="360" font-size="18" font-family="Arial" fill="#1f2a44">About Me</text>
+      <rect x="80" y="380" width="360" height="12" rx="6" fill="#e9ecf5"/>
+      <rect x="80" y="400" width="330" height="12" rx="6" fill="#e9ecf5"/>
+      <rect x="80" y="420" width="350" height="12" rx="6" fill="#e9ecf5"/>
+      <rect x="80" y="440" width="300" height="12" rx="6" fill="#e9ecf5"/>
+
+      <!-- FAVORITES -->
+      <rect x="500" y="320" width="430" height="180" rx="18" fill="#ffffff" stroke="#d8dbe3"/>
+      <text x="530" y="360" font-size="18" font-family="Arial" fill="#1f2a44">Favorites</text>
+
+      <!-- Favorites cards -->
+      <rect x="530" y="380" width="180" height="95" rx="14" fill="#f7f8fb" stroke="#d8dbe3"/>
+      <text x="548" y="407" font-size="13" font-family="Arial" fill="#1f2a44">Food</text>
+      <rect x="548" y="420" width="140" height="10" rx="5" fill="#e9ecf5"/>
+      <rect x="548" y="438" width="120" height="10" rx="5" fill="#e9ecf5"/>
+      <rect x="548" y="456" width="130" height="10" rx="5" fill="#e9ecf5"/>
+
+      <rect x="730" y="380" width="180" height="95" rx="14" fill="#f7f8fb" stroke="#d8dbe3"/>
+      <text x="748" y="407" font-size="13" font-family="Arial" fill="#1f2a44">Hobbies</text>
+      <rect x="748" y="420" width="140" height="10" rx="5" fill="#e9ecf5"/>
+      <rect x="748" y="438" width="120" height="10" rx="5" fill="#e9ecf5"/>
+      <rect x="748" y="456" width="130" height="10" rx="5" fill="#e9ecf5"/>
+
+      <!-- CONTACT -->
+      <rect x="50" y="515" width="880" height="60" rx="16" fill="#ffffff" stroke="#d8dbe3"/>
+      <text x="80" y="552" font-size="18" font-family="Arial" fill="#1f2a44">Contact</text>
+      <rect x="190" y="537" width="250" height="16" rx="8" fill="#e9ecf5"/>
+      <rect x="460" y="537" width="220" height="16" rx="8" fill="#e9ecf5"/>
+      <rect x="700" y="534" width="200" height="22" rx="10" fill="#dbe7ff" stroke="#c4d6ff"/>
+      <text x="748" y="550" font-size="13" font-family="Arial" fill="#1f2a44">Send</text>
+
+      <!-- Labels / Guides -->
+      <g font-family="Arial" font-size="11" fill="#6b7280">
+        <text x="52" y="132">HERO SECTION</text>
+        <text x="52" y="317">ABOUT</text>
+        <text x="500" y="317">FAVORITES</text>
+        <text x="52" y="512">CONTACT</text>
+      </g>
+    </svg>
+
+    <p class="note" style="margin-top:12px;">
+      Match this mockup:
+      <strong>Navbar</strong> → <strong>Hero</strong> → <strong>About</strong> + <strong>Favorites</strong> (two columns) → <strong>Contact</strong>.
+    </p>
+  </div>
+
+  <hr />
+
+  <section>
+    <h2>1. Required Files</h2>
+    <ul>
+      <li><strong>index.html</strong> (main page)</li>
+      <li><strong>style.css</strong> (all styling here; no inline styles)</li>
+      <li><strong>assets/</strong> folder (profile photo, icons if used)</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>2. Required Sections</h2>
+    <ol>
+      <li><strong>Header / Navbar</strong> (name + links)</li>
+      <li><strong>Hero</strong> (big title + short intro + button)</li>
+      <li><strong>About Me</strong> (3–5 sentences)</li>
+      <li><strong>Favorites</strong> (Food + Hobbies lists)</li>
+      <li><strong>Contact</strong> (email + phone/social + button)</li>
+      <li><strong>Footer</strong> (copyright)</li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>3. Content Rules</h2>
+    <ul>
+      <li>Use real information (name, short bio, favorites).</li>
+      <li>Favorites must include <strong>2 lists</strong> (Food and Hobbies) with <strong>at least 3 items</strong> each.</li>
+      <li>Contact must include at least <strong>one</strong>: email, phone, or social link.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>4. Design Rules (Important)</h2>
+    <ul>
+      <li>Follow the SVG mockup layout: spacing, sections, two-column area.</li>
+      <li>Make it responsive: works on mobile and desktop.</li>
+      <li>Use CSS for layout (recommended: <code>flex</code> or <code>grid</code>).</li>
+      <li>Readable text (good contrast, not too small).</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>5. Technical Rules</h2>
+    <ul>
+      <li>Use semantic tags: <code>&lt;header&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;section&gt;</code>, <code>&lt;footer&gt;</code>.</li>
+      <li>Navigation links must use anchors with section IDs (example: <code>href="#about"</code>).</li>
+      <li>No frameworks (no Bootstrap/Tailwind).</li>
+      <li>JavaScript is optional (menu toggle only).</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>6. Submission Checklist</h2>
+    <ul>
+      <li>All required sections exist and are in the correct order.</li>
+      <li>Navbar links scroll correctly to sections.</li>
+      <li>Two-column layout for About + Favorites (like the mockup).</li>
+      <li>CSS is in <code>style.css</code> and linked properly.</li>
+      <li>No broken images/links.</li>
+    </ul>
+  </section>
+
+  <hr />
+  <p><strong>Tip:</strong> Build HTML structure first, then apply CSS to match the mockup.</p>
+
+</body>
+</html>
